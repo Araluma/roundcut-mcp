@@ -8,7 +8,7 @@ import { serveStdio } from "@modelcontextprotocol/server/stdio";
 import * as z from "zod/v4";
 import { FORMATS, circleCrop, compress, convert, crop, info, preview, resize, type Report } from "./engine.js";
 
-const VERSION = "0.1.0";
+const VERSION = "0.1.1";
 const SITE = "https://roundcut.app";
 
 const format = z.enum(FORMATS);

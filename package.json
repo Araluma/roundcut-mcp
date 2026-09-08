@@ -1,8 +1,8 @@
 {
   "name": "roundcut-mcp",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "MCP server for local image tools by RoundCut: circle crop, crop, resize, compress and convert JPG, PNG, WebP and AVIF with sharp. No network, no accounts.",
-  "mcpName": "io.github.araluma/roundcut-mcp",
+  "mcpName": "io.github.Araluma/roundcut-mcp",
   "type": "module",
   "bin": { "roundcut-mcp": "./dist/index.js" },
   "main": "./dist/index.js",

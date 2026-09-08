@@ -1,0 +1,30 @@
+{
+  "name": "roundcut-mcp",
+  "version": "0.1.0",
+  "description": "MCP server for local image tools by RoundCut: circle crop, crop, resize, compress and convert JPG, PNG, WebP and AVIF with sharp. No network, no accounts.",
+  "mcpName": "io.github.araluma/roundcut-mcp",
+  "type": "module",
+  "bin": { "roundcut-mcp": "./dist/index.js" },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": { ".": { "types": "./dist/index.d.ts", "default": "./dist/index.js" } },
+  "files": ["dist", "src", "server.json"],
+  "scripts": {
+    "build": "tsc -p tsconfig.json && chmod +x dist/index.js",
+    "test": "npm run build && node --test test/*.test.mjs",
+    "prepublishOnly": "npm test"
+  },
+  "keywords": ["mcp", "model-context-protocol", "image", "resize", "compress", "convert", "crop", "circle-crop", "avatar", "webp", "avif", "sharp", "roundcut"],
+  "author": "Araluma <dev@araluma.com>",
+  "license": "MIT",
+  "repository": { "type": "git", "url": "git+https://github.com/Araluma/roundcut-mcp.git" },
+  "bugs": { "url": "https://github.com/Araluma/roundcut-mcp/issues" },
+  "homepage": "https://roundcut.app",
+  "engines": { "node": ">=20" },
+  "dependencies": {
+    "@modelcontextprotocol/server": "^2.0.0",
+    "sharp": "^0.35.4",
+    "zod": "^4.2.0"
+  },
+  "devDependencies": { "@types/node": "^24.0.0", "typescript": "^5.7.0" }
+}

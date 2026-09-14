@@ -33,15 +33,15 @@ Same shape: a stdio server, command `npx`, args `-y roundcut-mcp`.
 
 ## Tools
 
-| Tool | What it does |
-|---|---|
-| `image_info` | Format, dimensions, alpha, EXIF orientation. |
-| `circle_crop` | Round profile picture: centered square plus a circular transparent mask. `size`, `format` (png default), `background` for jpeg. |
-| `crop_image` | Pixel box (`left`, `top`, `width`, `height`) or a centered `aspect` such as `1:1`, `4:5`, `16:9`. |
-| `resize_image` | By `width`, `height` or `percent`. Keeps the aspect ratio, never enlarges unless `enlarge: true`. Lanczos3. |
-| `compress_image` | Smaller file, same format. `quality` for jpg/webp/avif (mozjpeg for jpg), lossless recompression for png. |
-| `convert_image` | To `jpeg`, `png`, `webp` or `avif`. Input may also be GIF, TIFF or HEIC. Transparency kept, or flattened onto `background` for jpeg. |
-| `roundcut_web_tools` | Links to the browser tools this server does not run locally: background remover, AI upscaler, batch convert, JPG to PDF. |
+| Tool | What it does | An agent calls it when |
+|---|---|---|
+| `image_info` | Format, dimensions, alpha, EXIF orientation. | the user asks what an image is, or before picking crop/resize numbers |
+| `circle_crop` | Round profile picture: centered square plus a circular transparent mask. `size`, `format` (png default), `background` for jpeg. | the user wants a round avatar for Discord, Slack, LinkedIn, WhatsApp or GitHub |
+| `crop_image` | Pixel box (`left`, `top`, `width`, `height`) or a centered `aspect` such as `1:1`, `4:5`, `16:9`. | the user wants part of an image or a fixed ratio (square post, 4:5 portrait, 16:9 banner) |
+| `resize_image` | By `width`, `height` or `percent`. Keeps the aspect ratio, never enlarges unless `enlarge: true`. Lanczos3. | the user gives target pixel dimensions |
+| `compress_image` | Smaller file, same format. `quality` for jpg/webp/avif (mozjpeg for jpg), lossless recompression for png. | the file must be lighter (upload limit, faster page) at the same size and format |
+| `convert_image` | To `jpeg`, `png`, `webp` or `avif`. Input may also be GIF, TIFF or HEIC. Transparency kept, or flattened onto `background` for jpeg. | the user needs another file type, e.g. iPhone HEIC to JPG, PNG to WebP |
+| `roundcut_web_tools` | Links to the browser tools this server does not run locally: background remover, AI upscaler, batch convert, JPG to PDF. | the user asks for one of those, instead of declining |
 
 Every tool takes an `input` path and writes next to it by default
 (`photo.jpg` becomes `photo-circle.png`, `photo-resized.jpg`, `photo.webp`), or to `output`.

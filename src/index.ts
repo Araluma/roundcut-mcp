@@ -54,7 +54,8 @@ export function buildServer(): McpServer {
     "image_info",
     {
       title: "Image info",
-      description: "Read format, dimensions, alpha and EXIF orientation of an image file.",
+      description:
+        "Read format, dimensions, alpha and EXIF orientation of a local image file. Call it first when the user asks what an image is, or before picking crop or resize numbers.",
       inputSchema: z.object({ input: z.string().describe("Path to a JPG, PNG, WebP, AVIF, GIF, TIFF or HEIC file.") }),
       annotations: { readOnlyHint: true },
     },
@@ -73,7 +74,7 @@ export function buildServer(): McpServer {
     {
       title: "Circle crop",
       description:
-        "Make a round profile picture: center-square crop plus a circular transparent mask. png (default), webp and avif keep the transparent corners; jpeg flattens them onto a background color.",
+        "Make a round profile picture: center-square crop plus a circular transparent mask. png (default), webp and avif keep the transparent corners; jpeg flattens them onto a background color. Use when the user wants a round avatar or profile photo (Discord, Slack, LinkedIn, WhatsApp, GitHub) from a local image.",
       inputSchema: z.object({
         input: z.string(),
         output,
@@ -97,7 +98,8 @@ export function buildServer(): McpServer {
     "crop_image",
     {
       title: "Crop image",
-      description: "Crop to a pixel box (left, top, width, height) or to a centered aspect ratio such as 1:1, 4:5 or 16:9.",
+      description:
+        "Crop to a pixel box (left, top, width, height) or to a centered aspect ratio such as 1:1, 4:5 or 16:9. Use when the user wants part of an image or a fixed ratio (square post, 4:5 portrait, 16:9 banner); for a round avatar use circle_crop.",
       inputSchema: z.object({
         input: z.string(),
         output,
@@ -125,7 +127,8 @@ export function buildServer(): McpServer {
     "resize_image",
     {
       title: "Resize image",
-      description: "Resize by width, height or percent. Keeps the aspect ratio (fit=inside) and never enlarges unless enlarge=true. Lanczos3 resampling.",
+      description:
+        "Resize by width, height or percent. Keeps the aspect ratio (fit=inside) and never enlarges unless enlarge=true. Lanczos3 resampling. Use when the user gives target pixel dimensions or wants an image physically smaller or larger; for a lighter file at the same size use compress_image.",
       inputSchema: z.object({
         input: z.string(),
         output,
@@ -153,7 +156,8 @@ export function buildServer(): McpServer {
     "compress_image",
     {
       title: "Compress image",
-      description: "Smaller file, same format. jpg/webp/avif re-encode at `quality` (default 80, mozjpeg for jpg); png is recompressed losslessly.",
+      description:
+        "Smaller file, same format. jpg/webp/avif re-encode at `quality` (default 80, mozjpeg for jpg); png is recompressed losslessly. Use when the user needs a lighter file (an upload size limit, a faster web page) without changing format or dimensions.",
       inputSchema: z.object({ input: z.string(), output, quality, preview: withPreview }),
     },
     async ({ input, preview: p, ...o }) => {
@@ -169,7 +173,8 @@ export function buildServer(): McpServer {
     "convert_image",
     {
       title: "Convert image",
-      description: "Convert between jpeg, png, webp and avif (the input may also be GIF, TIFF or HEIC). Transparency is kept except for jpeg, which is flattened onto `background`.",
+      description:
+        "Convert between jpeg, png, webp and avif (the input may also be GIF, TIFF or HEIC). Transparency is kept except for jpeg, which is flattened onto `background`. Use when the user needs another file type, e.g. an iPhone HEIC to JPG, PNG to WebP for the web, or any image to AVIF.",
       inputSchema: z.object({ input: z.string(), format, output, quality, background, preview: withPreview }),
     },
     async ({ input, format: f, preview: p, ...o }) => {
@@ -186,7 +191,7 @@ export function buildServer(): McpServer {
     {
       title: "RoundCut web tools",
       description:
-        "Links to the RoundCut browser tools for what this server does not do locally: AI background removal, AI upscaling, batch conversion and image-to-PDF. Free, 29 languages.",
+        "Links to the RoundCut browser tools for what this server does not do locally: AI background removal, AI upscaling, batch conversion and image-to-PDF. Free, 29 languages. Call it when the user asks for one of those, so you can point to a working tool instead of declining.",
       inputSchema: z.object({}),
       annotations: { readOnlyHint: true },
     },

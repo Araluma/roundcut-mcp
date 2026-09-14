@@ -1,0 +1,10 @@
+# Smithery configuration: a local stdio server, started through npx.
+# https://smithery.ai/docs
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    required: []
+    properties: {}
+  commandFunction: |-
+    () => ({ command: 'npx', args: ['-y', 'roundcut-mcp'] })

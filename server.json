@@ -3,14 +3,14 @@
   "name": "io.github.Araluma/roundcut-mcp",
   "description": "Local image tools: circle crop, crop, resize, compress, convert JPG/PNG/WebP/AVIF. By RoundCut.",
   "repository": { "url": "https://github.com/Araluma/roundcut-mcp", "source": "github" },
-  "version": "0.1.1",
+  "version": "0.1.2",
   "websiteUrl": "https://roundcut.app",
   "packages": [
     {
       "registryType": "npm",
       "registryBaseUrl": "https://registry.npmjs.org",
       "identifier": "roundcut-mcp",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "transport": { "type": "stdio" }
     }
   ]

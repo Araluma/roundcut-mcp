@@ -31,6 +31,12 @@ Claude Code: `claude mcp add roundcut -- npx -y roundcut-mcp`
 
 Same shape: a stdio server, command `npx`, args `-y roundcut-mcp`.
 
+### Smithery
+
+[smithery.ai/servers/araluma/roundcut-mcp](https://smithery.ai/servers/araluma/roundcut-mcp)
+installs a self-contained bundle for macOS (Apple Silicon) and Windows (x64). On Linux or an
+Intel Mac, use `npx` above.
+
 ## Tools
 
 | Tool | What it does | An agent calls it when |
@@ -70,6 +76,10 @@ npm test        # builds, then node --test
 ```
 
 `src/engine.ts` is the pure image layer (tested directly). `src/index.ts` adapts it to MCP tools.
+
+Smithery release: `scripts/build-mcpb.sh` builds `build/roundcut-mcp-<version>.mcpb` from
+`mcpb/manifest.json` (25 MB cap, so only the macOS arm64 and Windows x64 sharp binaries go in),
+then `scripts/publish-smithery.sh` uploads it with the tool schemas read from the built server.
 
 ## License
 

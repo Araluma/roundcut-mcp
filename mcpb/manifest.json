@@ -1,0 +1,33 @@
+{
+  "manifest_version": "0.3",
+  "name": "roundcut-mcp",
+  "display_name": "RoundCut Image Tools",
+  "version": "0.1.2",
+  "description": "Local image tools: circle crop, crop, resize, compress and convert JPG, PNG, WebP and AVIF. No network, no accounts.",
+  "long_description": "Image tools that run on your machine with sharp (libvips). Make round profile pictures, crop to a box or an aspect ratio, resize, compress without changing format, and convert between JPEG, PNG, WebP and AVIF (input may also be GIF, TIFF or HEIC). Files never leave your computer. For AI background removal, AI upscaling and image-to-PDF, the server links to the free RoundCut web tools.",
+  "author": { "name": "Araluma", "email": "dev@araluma.com", "url": "https://roundcut.app" },
+  "repository": { "type": "git", "url": "https://github.com/Araluma/roundcut-mcp.git" },
+  "homepage": "https://roundcut.app",
+  "support": "https://github.com/Araluma/roundcut-mcp/issues",
+  "icon": "icon.png",
+  "server": {
+    "type": "node",
+    "entry_point": "dist/index.js",
+    "mcp_config": { "command": "node", "args": ["${__dirname}/dist/index.js"] }
+  },
+  "tools": [
+    { "name": "image_info", "description": "Read format, dimensions, alpha and EXIF orientation of a local image." },
+    { "name": "circle_crop", "description": "Round profile picture: center-square crop plus a circular transparent mask." },
+    { "name": "crop_image", "description": "Crop to a pixel box or a centered aspect ratio such as 1:1, 4:5 or 16:9." },
+    { "name": "resize_image", "description": "Resize by width, height or percent, keeping the aspect ratio." },
+    { "name": "compress_image", "description": "Smaller file, same format and dimensions." },
+    { "name": "convert_image", "description": "Convert between JPEG, PNG, WebP and AVIF (input may also be GIF, TIFF or HEIC)." },
+    { "name": "roundcut_web_tools", "description": "Links to the RoundCut browser tools for background removal, upscaling, batch conversion and image-to-PDF." }
+  ],
+  "keywords": ["image", "resize", "compress", "convert", "crop", "circle-crop", "avatar", "webp", "avif", "heic", "sharp"],
+  "license": "MIT",
+  "compatibility": {
+    "platforms": ["darwin", "win32"],
+    "runtimes": { "node": ">=20.0.0" }
+  }
+}
